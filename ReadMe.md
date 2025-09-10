@@ -1,6 +1,6 @@
 # Blue Team Tools - Repository for the Defenders!
 
-![Blue Team Tools Logo](https://i.imgur.com/3j7zB3r.png)
+![Blue Team Tools Logo](https://github.com/CyberPanther232/Blue-Team-Tools/blob/1248fb2dac34646489320a19125a6d713a560119/git_repo_logo.png)
 
 A collection of scripts and utilities designed to assist cybersecurity professionals in defensive operations (Blue Teaming). This repository's flagship tool is the **VirusTotal IoC Scanner**.
 
