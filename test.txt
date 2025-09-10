@@ -1,2 +1,0 @@
-IoC,Malicious,Suspicious,Undetected,Harmless,Last Analysis Date
-hxxp[:]//x4z9arb[.]cn/4712/,3,0,33,62,2025-09-08 11:37:06
