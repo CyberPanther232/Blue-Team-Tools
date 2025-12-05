@@ -21,6 +21,33 @@ Set your VirusTotal API key via environment variable:
 $Env:VIRUSTOTAL_API_KEY = "<your_api_key_here>"
 ```
 
+You can also configure supported LLM clients to point at this MCP server using the provided scripts:
+
+- PowerShell (Windows): `Set-IoC-MCP-Config.ps1`
+- Bash (Linux/macOS): `set_mcp_config.sh`
+
+Examples:
+
+```pwsh
+# Windows PowerShell — Gemini client
+./Set-IoC-MCP-Config.ps1 -aiModel gemini
+
+# Windows PowerShell — Claude client
+./Set-IoC-MCP-Config.ps1 -aiModel claude
+```
+
+```bash
+# Bash — Gemini client
+bash ./set_mcp_config.sh --model gemini
+
+# Bash — Claude client (Linux/macOS)
+bash ./set_mcp_config.sh --model claude
+```
+
+Note: Copilot desktop config path logic is not defined yet in these scripts.
+
+⚠ Warning: Treat LLMs as untrusted for sensitive data. Do not paste secrets, API keys, or confidential indicators directly into prompts or conversation history. Prefer environment variables and server-side storage. Review your LLM client's settings and data retention policies carefully.
+
 ## Run
 
 ```pwsh
