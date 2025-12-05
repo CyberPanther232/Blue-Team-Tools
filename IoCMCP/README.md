@@ -120,3 +120,24 @@ If the API key is missing or invalid, the function returns a helpful error objec
 - Avoid pasting secrets into LLM prompts; use environment variables.
 - Treat outputs as assistive intelligence; verify with authoritative sources.
 - Review your LLM client’s data retention settings before connecting MCP.
+
+## Installation Instructions for AI CLI tools
+
+
+#### Instructions to install Copilot CLI
+
+```
+https://github.com/github/copilot-cli?locale=en-US
+```
+
+#### Instructions to Install Gemini CLI
+
+```
+https://dev.to/auden/google-gemini-cli-tutorial-how-to-install-and-use-it-with-images-4phb
+```
+
+#### Instructions to Install Claude CLI
+
+```
+https://code.claude.com/docs/en/setup
+```
