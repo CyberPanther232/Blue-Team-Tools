@@ -13,7 +13,7 @@ import json
 import time
 from queue import Queue
 from argparse import ArgumentParser
-from datetime import datetime, timezone
+from datetime import datetime
 import hashlib # Required for URL hashing
 import os # Required for file path checks
 import re # Required for regex-based validation
@@ -30,19 +30,16 @@ def safe_print(*args, **kwargs):
         print(*args, **kwargs)
 
 def print_progress_bar(completed, total, bar_length=40):
-    try:
-        """Prints a character-based progress bar. This will overwrite the current line."""
-        percent = completed / total
-        filled_length = int(bar_length * percent)
-        bar = '█' * filled_length + '-' * (bar_length - filled_length)
-        # Use carriage return '\r' to go to the start of the line and flush to ensure it prints
-        # An extra space at the end cleans up any leftover characters from previous prints
-        sys.stdout.write(f'\rProgress: |{bar}| {completed}/{total} ({percent:.1%}) ')
-        sys.stdout.flush()
-        if completed == total:
-            print() # Move to the next line after completion
-    except KeyboardInterrupt:
-        print("[!] Exiting program...")
+    """Prints a character-based progress bar. This will overwrite the current line."""
+    percent = completed / total
+    filled_length = int(bar_length * percent)
+    bar = '█' * filled_length + '-' * (bar_length - filled_length)
+    # Use carriage return '\r' to go to the start of the line and flush to ensure it prints
+    # An extra space at the end cleans up any leftover characters from previous prints
+    sys.stdout.write(f'\rProgress: |{bar}| {completed}/{total} ({percent:.1%}) ')
+    sys.stdout.flush()
+    if completed == total:
+        print() # Move to the next line after completion
 
 # --- IoC Defanging, Validation & Determination Functions ---
 
@@ -143,7 +140,7 @@ class VTScanner:
                     "suspicious": stats.get("suspicious", 0),
                     "undetected": stats.get("undetected", 0),
                     "harmless": stats.get("harmless", 0),
-                    "date": datetime.fromtimestamp(last_analysis_date, tz=timezone.utc).strftime('%Y-%m-%d %H:%M:%S') if last_analysis_date else "N/A"
+                    "date": datetime.utcfromtimestamp(last_analysis_date).strftime('%Y-%m-%d %H:%M:%S') if last_analysis_date else "N/A"
                 }
                 return True
             elif response.status_code == 404:
@@ -235,59 +232,55 @@ def main():
         iocs_to_scan = [ioc.strip() for ioc in args.input.split(',') if ioc.strip()]
 
     # --- Setup IoC Queue ---
-    try:
-        queue = Queue()
+    queue = Queue()
+    
+    for ioc in iocs_to_scan:
+        current_mode = args.mode
+        if args.listfile or args.mode == 'auto':
+            current_mode = determine_ioc_type(ioc)
         
-        for ioc in iocs_to_scan:
-            current_mode = args.mode
-            if args.listfile or args.mode == 'auto':
-                current_mode = determine_ioc_type(ioc)
-            
-            if current_mode:
-                if args.mode == 'auto' or args.listfile:
-                    safe_print(f"[*] Detected '{defang_ioc(ioc)}' as type: {current_mode}")
-                scanner = VTScanner(api_key=args.apikey, ioc=ioc, mode=current_mode)
-                queue.put(scanner)
-            else:
-                safe_print(f"[!] Warning: Could not determine type for '{defang_ioc(ioc)}'. Skipping.")
-
-        if queue.empty():
-            safe_print("[!] No valid IoCs were found to scan.")
-            return
-
-        results = []
-        threads = []
-        total_items = queue.qsize()
-        completed_count = [0] # Use a list for mutability across threads
-        progress_lock = Lock()
-        log_buffer = []
-        log_lock = Lock()
-        
-        safe_print(f"\n[*] Starting scan for {total_items} IoCs with {args.threads} threads...")
-        print_progress_bar(0, total_items) # Print initial empty bar
-
-        for _ in range(args.threads):
-            thread = Thread(target=worker, args=(queue, results, total_items, completed_count, progress_lock, log_buffer, log_lock))
-            thread.start()
-            threads.append(thread)
-
-        queue.join()
-        for thread in threads:
-            thread.join()
-
-        # Final check for any remaining log messages
-        if log_buffer:
-            sys.stdout.write('\r' + ' ' * 80 + '\r')
-            for msg in log_buffer:
-                print(msg)
-
-        if results:
-            generate_report(args.output, results)
+        if current_mode:
+            if args.mode == 'auto' or args.listfile:
+                safe_print(f"[*] Detected '{defang_ioc(ioc)}' as type: {current_mode}")
+            scanner = VTScanner(api_key=args.apikey, ioc=ioc, mode=current_mode)
+            queue.put(scanner)
         else:
-            safe_print("[!] No results were successfully retrieved.")
-    except KeyboardInterrupt:
-        print("[!] Keyboard interruption detected! Shutting down!")
-        exit(0)
+            safe_print(f"[!] Warning: Could not determine type for '{defang_ioc(ioc)}'. Skipping.")
+
+    if queue.empty():
+        safe_print("[!] No valid IoCs were found to scan.")
+        return
+
+    results = []
+    threads = []
+    total_items = queue.qsize()
+    completed_count = [0] # Use a list for mutability across threads
+    progress_lock = Lock()
+    log_buffer = []
+    log_lock = Lock()
+    
+    safe_print(f"\n[*] Starting scan for {total_items} IoCs with {args.threads} threads...")
+    print_progress_bar(0, total_items) # Print initial empty bar
+
+    for _ in range(args.threads):
+        thread = Thread(target=worker, args=(queue, results, total_items, completed_count, progress_lock, log_buffer, log_lock))
+        thread.start()
+        threads.append(thread)
+
+    queue.join()
+    for thread in threads:
+        thread.join()
+
+    # Final check for any remaining log messages
+    if log_buffer:
+        sys.stdout.write('\r' + ' ' * 80 + '\r')
+        for msg in log_buffer:
+            print(msg)
+
+    if results:
+        generate_report(args.output, results)
+    else:
+        safe_print("[!] No results were successfully retrieved.")
 
 if __name__ == "__main__":
     main()
