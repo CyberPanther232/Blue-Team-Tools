@@ -17,7 +17,7 @@ function Set-MCPConfig {
 
     # 1. Define Paths Robustly
     # We use Resolve-Path to ensure we get the real location, regardless of where the script runs
-    if (-not (Test-Path "IoCMCP")) {
+    if (-not (Test-Path "..\IoCMCP")) {
         Write-Error "Directory 'IoCMCP' not found in current location."
         return
     }
