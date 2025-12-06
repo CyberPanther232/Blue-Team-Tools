@@ -1,4 +1,5 @@
 from mcp.server.fastmcp import FastMCP
+from .threatfox_api import 
 import os
 import requests
 
@@ -210,7 +211,8 @@ def shodan_ip_lookup(ip: str, api_key: str=SHODAN_API_KEY) -> dict:
             "error": "Network or request error",
             "details": str(e)
         }
-        
+
+@mcp.tool()
 def shodan_domain_lookup(domain: str, api_key: str=SHODAN_API_KEY) -> dict:
     """
     Look up domain information using the Shodan API.
@@ -243,7 +245,8 @@ def shodan_domain_lookup(domain: str, api_key: str=SHODAN_API_KEY) -> dict:
             "error": "Network or request error",
             "details": str(e)
         }
-        
+
+@mcp.tool()
 def shodan_host_search(query: str, api_key: str=SHODAN_API_KEY) -> dict:
     """
     Search hosts using the Shodan API.

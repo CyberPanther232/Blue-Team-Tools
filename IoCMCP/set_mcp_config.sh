@@ -59,7 +59,7 @@ if [[ ! -d "$IOCMCP_DIR" ]]; then
 fi
 
 # Compute paths (Unix-style venv layout)
-VENV_PYTHON="$IOCMCP_DIR/venv/bin/python"
+VENV_PYTHON="$IOCMCP_DIR/.venv/bin/python"
 SERVER_PATH="$IOCMCP_DIR/server.py"
 
 if [[ ! -x "$VENV_PYTHON" ]]; then
@@ -69,7 +69,7 @@ if [[ ! -x "$VENV_PYTHON" ]]; then
 	elif command -v python >/dev/null 2>&1; then
 		VENV_PYTHON=$(command -v python)
 	else
-		err "No python interpreter found. Create venv: python3 -m venv '$IOCMCP_DIR/venv'"
+		err "No python interpreter found. Create venv: python3 -m venv '$IOCMCP_DIR/.venv'"
 		exit 1
 	fi
 fi

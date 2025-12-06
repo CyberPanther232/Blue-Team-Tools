@@ -22,7 +22,7 @@ function Set-MCPConfig {
         return
     }
     $IoCMCPDirectory = (Resolve-Path "..\IoCMCP").Path
-    $VenvPythonPath  = Join-Path $IoCMCPDirectory "venv\Scripts\python.exe"
+    $VenvPythonPath  = Join-Path $IoCMCPDirectory ".venv\Scripts\python.exe"
     $ServerPath      = Join-Path $IoCMCPDirectory "server.py"
 
     # 2. Create the Configuration as an OBJECT (Not a String)
