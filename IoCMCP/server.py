@@ -1,4 +1,5 @@
 from mcp.server.fastmcp import FastMCP
+import beautifulsoup4 as bs4
 import os
 import requests
 
@@ -557,8 +558,6 @@ def otx_indicator_lookup(indicator: str, api_key: str) -> dict:
 
 @mcp.tool()
 def hibp_breach_lookup(breach_name: str) -> dict:
-    
-    import beautifulsoup4 as bs4
     
     """
     Look up breach information using the HaveIBeenPwned API.
