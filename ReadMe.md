@@ -111,7 +111,7 @@ The script will generate a CSV file with the following format:
 
 ---
 
-## Indicator of Compromise MCP Server (`IoCMCP`)
+## Indicator of Compromise MCP Server (`IoCMCP`) - Work in Progress
 
 A FastMCP Python based MCP Server to assist agentic AI models and applications such as Copilot, Gemini, and Claude with OSINT research on IOCs such as: (domains, IPs, hashes, URLs)
 
