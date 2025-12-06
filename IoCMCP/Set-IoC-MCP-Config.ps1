@@ -25,18 +25,23 @@ function Set-MCPConfig {
     $VenvPythonPath  = Join-Path $IoCMCPDirectory ".venv\Scripts\python.exe"
     $ServerPath      = Join-Path $IoCMCPDirectory "server.py"
 
+    # Normalize paths to forward slashes for JSON consumers
+    $IoCMCPDirectoryFS = $IoCMCPDirectory -replace "\\", "/"
+    $VenvPythonPathFS  = $VenvPythonPath  -replace "\\", "/"
+    $ServerPathFS      = $ServerPath      -replace "\\", "/"
+
     # 2. Create the Configuration as an OBJECT (Not a String)
     # This prevents the backslash/escaping issues entirely.
     $IoCConfigObject = @{
-        command      = $VenvPythonPath
-        args         = $ServerPath
+        command      = $VenvPythonPathFS
+        args         = @($ServerPathFS)
         env          = @{
             PYTHONUTF8      = "1"
             VIRUS_TOTAL_KEY = $env:VIRUS_TOTAL_KEY
             SHODAN_API_KEY  = $env:SHODAN_API_KEY
             ABUSE_CH_KEY    = $env:ABUSE_CH_KEY
         }
-        resourcePath = $IoCMCPDirectory
+        resourcePath = $IoCMCPDirectoryFS
     }
 
     # 3. Determine Target Config File based on AI Model
