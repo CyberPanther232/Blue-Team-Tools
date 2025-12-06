@@ -1,5 +1,4 @@
 from mcp.server.fastmcp import FastMCP
-from .threatfox_api import 
 import os
 import requests
 
