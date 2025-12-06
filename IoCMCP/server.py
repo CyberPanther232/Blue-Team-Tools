@@ -1,5 +1,5 @@
 from mcp.server.fastmcp import FastMCP
-import beautifulsoup4 as bs4
+import bs4
 import os
 import requests
 
@@ -567,12 +567,12 @@ def hibp_breach_lookup(breach_name: str) -> dict:
         dict: The JSON response from the HaveIBeenPwned Website.
     """
     
-    url = "https://haveibeendpwned.com/PwnedWebsites"
+    url = "https://haveibeenpwned.com/PwnedWebsites"
     
     breach_data = {}
     
     try:
-        content = requests.get(url, timeout=15, headers={"User-Agent": "IoCMCP-Tool"})
+        content = requests.get(url, timeout=15)
         soup = bs4.BeautifulSoup(content.text, 'html.parser')
         table = soup.find('table', {'id': 'breachesTable'})
         rows = table.find_all('tr')[1:]  # Skip header row
@@ -604,7 +604,44 @@ def hibp_breach_lookup(breach_name: str) -> dict:
             "details": str(e)
         }
     
+@mcp.tool()
+def hibp_companies_breached() -> dict:
+    """
+    Retrieve a list of companies with breaches from HaveIBeenPwned.
 
+    Returns:
+        dict: A dictionary with company names as keys and breach counts as values.
+    """
+    
+    url = "https://haveibeenpwned.com/PwnedWebsites"
+    
+    companies = {}
+    
+    try:
+        content = requests.get(url, timeout=15)
+        soup = bs4.BeautifulSoup(content.text, 'html.parser')
+        table = soup.find('table', {'id': 'breachesTable'})
+        rows = table.find_all('tr')[1:]  # Skip header row
+        
+        for row in rows:
+            cols = row.find_all('td')
+            breach = cols[0].text.strip()
+            pwncount = cols[1].text.strip()
+            date = cols[2].text.strip()
+            breachDate = cols[3].text.strip()
+            
+            companies[breach] = {
+                "pwncount": pwncount,
+                "date": date,
+                "breachDate": breachDate
+            }
+        
+        return companies
+    except requests.exceptions.RequestException as e:
+        return {
+            "error": "Network or request error",
+            "details": str(e)
+        }
         
 if __name__ == "__main__":
     mcp.run(transport="stdio")
