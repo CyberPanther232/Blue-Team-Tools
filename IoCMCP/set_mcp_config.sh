@@ -69,7 +69,7 @@ if [[ ! -x "$VENV_PYTHON" ]]; then
 	elif command -v python >/dev/null 2>&1; then
 		VENV_PYTHON=$(command -v python)
 	else
-		err "No python interpreter found. Create venv: python3 -m venv '$IOCMCP_DIR/.venv'"
+		err "No python interpreter found. Create venv: python3 -m .venv '$IOCMCP_DIR/.venv'"
 		exit 1
 	fi
 fi
