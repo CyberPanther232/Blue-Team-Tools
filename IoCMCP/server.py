@@ -431,7 +431,7 @@ def threat_fox_malware_lookup(malware_name: str, auth_key: str=ABUSE_CH_AUTH_KEY
     url = f"https://threatfox.abuse.ch/api/v1/"
     data = {
         "query": "malwareinfo",
-        "malware": malware_name
+        "malware": malware_name,
         "limit" : 5
     }
     
