@@ -87,16 +87,16 @@ SHODAN_API_KEY="${SHODAN_API_KEY:-}"
 ABUSE_CH_KEY="${ABUSE_CH_KEY:-}"
 
 IOC_CONFIG_JSON=$(jq -n \
-	--arg command "$VENV_PYTHON" \
-	--arg args "$SERVER_PATH" \
+	--arg command "${VENV_PYTHON//\\/\/}" \
+	--arg args0 "$SERVER_PATH" \
 	--arg pythonutf8 "$PYTHONUTF8" \
 	--arg vt "$VIRUS_TOTAL_KEY" \
 	--arg shodan "$SHODAN_API_KEY" \
 	--arg abuse "$ABUSE_CH_KEY" \
-	--arg resourcePath "$IOCMCP_DIR" \
+	--arg resourcePath "${IOCMCP_DIR//\\/\/}" \
 	'{
 		command: $command,
-		args: $args,
+		args: [$args0],
 		env: {
 			PYTHONUTF8: $pythonutf8,
 			VIRUS_TOTAL_KEY: $vt,
