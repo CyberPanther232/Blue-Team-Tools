@@ -2,5 +2,7 @@
 *.txt
 *.log
 *.out
+*.pyc
 /.venv/
 __pycache__/
+/target/
