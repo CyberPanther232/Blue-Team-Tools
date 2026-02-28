@@ -1,0 +1,2 @@
+feed_info[1]{name,url,enabled,consecutive_failures}:
+  US-CERT Alerts,"https://www.cisa.gov/cybersecurity-advisories/all.xml",False,"3"

@@ -1,0 +1,25 @@
+scan_info[1]:
+  - id: 998543d2
+    query: "https://cyberpanther-dev.space"
+    timestamp: "2026-02-28 12:23:03"
+    risk: Low
+    summary: No immediate threats detected
+    full_results:
+      AbuseIPDB:
+        error: Module AbuseIPDB does not support URL scanning.
+      "AlienVault OTX":
+        error: Module AlienVault OTX does not support URL scanning.
+      GreyNoise:
+        error: Module GreyNoise does not support URL scanning.
+      Shodan:
+        error: Module Shodan does not support URL scanning.
+      VirusTotal:
+        "POST:/urls":
+          data:
+            type: analysis
+            id: u-055758c0c4c94b527ae2e8f4861926bc0142414a7b27587cea405dc602b354e4-1c1936f1
+            links:
+              self: "https://www.virustotal.com/api/v3/analyses/u-055758c0c4c94b527ae2e8f4861926bc0142414a7b27587cea405dc602b354e4-1c1936f1"
+        "/urls/{url|vt_id}":
+          error: API returned 404
+          details: "{\"error\": {\"code\": \"NotFoundError\", \"message\": \"URL \\\"aHR0cHM6Ly9jeWJlcnBhbnRoZXItZGV2LnNwYWNl\\\" not found\"}}"

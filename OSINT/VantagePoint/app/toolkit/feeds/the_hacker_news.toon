@@ -1,0 +1,2 @@
+feed_info[1]{name,url,enabled,consecutive_failures}:
+  The Hacker News,"https://feeds.feedburner.com/TheHackersNews",True,"0"

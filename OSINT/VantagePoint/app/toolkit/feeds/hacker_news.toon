@@ -1,0 +1,2 @@
+feed_info[1]{name,url,enabled,consecutive_failures}:
+  Hacker News,"https://news.ycombinator.com/rss",True,"0"

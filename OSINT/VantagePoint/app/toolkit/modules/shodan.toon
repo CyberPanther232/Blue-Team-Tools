@@ -1,0 +1,4 @@
+tool_info[1]{name,description,api_endpoint,key_required,key_env_var,enabled,author,docs_link,key_header_name,consecutive_failures}:
+  Shodan,Search engine for Internet-connected devices.,"https://api.shodan.io",True,SHODAN_API_KEY,True,Shodan,"https://developer.shodan.io/api",x-apikey,"0"
+env_config[1]{IP_SCANNABLE,IP_ROUTE}:
+  True,"/shodan/host/{ip}?key={SHODAN_API_KEY}"

@@ -1,0 +1,4 @@
+tool_info[1]{name,description,api_endpoint,key_required,key_env_var,enabled,author,docs_link,key_header_name,consecutive_failures}:
+  VirusTotal,"Analyze suspicious files, domains, IPs and URLs.","https://www.virustotal.com/api/v3",True,VIRUSTOTAL_API_KEY,True,VirusTotal,"https://docs.virustotal.com/reference/overview",x-apikey,"0"
+env_config[1]{IP_SCANNABLE,IP_ROUTE,DOMAIN_SCANNABLE,DOMAIN_ROUTE,HASH_SCANNABLE,HASH_ROUTE,EMAIL_SCANNABLE,EMAIL_ROUTE,URL_SCANNABLE,URL_ROUTE}:
+  True,"/ip_addresses/{ip}",True,"/domains/{domain}",True,"/files/{hash}",False,"",True,"POST:/urls || /urls/{url|vt_id}"

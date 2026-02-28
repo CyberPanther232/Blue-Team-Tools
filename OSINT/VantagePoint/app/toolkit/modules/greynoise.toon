@@ -1,0 +1,4 @@
+tool_info[1]{name,description,api_endpoint,key_required,key_env_var,enabled,author,docs_link,key_header_name,consecutive_failures}:
+  GreyNoise,Internet-wide noise analysis.,"https://api.greynoise.io",True,GREYNOISE_API_KEY,True,GreyNoise,"https://docs.greynoise.io/reference/get_v3-community-ip",x-apikey,"0"
+env_config[1]{IP_SCANNABLE,IP_ROUTE}:
+  True,"/v3/community/{ip}"

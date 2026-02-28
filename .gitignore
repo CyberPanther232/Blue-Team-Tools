@@ -8,3 +8,6 @@ __pycache__/
 /target/
 *.venv
 *.cfg
+*.env
+*.db
+*.conf

@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-header">
+    <h1><i class="fas fa-search"></i> Bulk IoC Search Results</h1>
+    <p>Total IoCs Analyzed: <strong>{{ bulk_results.keys()|length }}</strong></p>
+</div>
+
+{% for query, results in bulk_results.items() %}
+<div style="margin-top: 40px; margin-bottom: 60px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--sidebar-bg); padding-bottom: 15px; margin-bottom: 25px;">
+        <h2 style="margin: 0; display: flex; align-items: center; gap: 15px;">
+            <i class="fas fa-fingerprint" style="color: var(--accent);"></i>
+            <code style="background: rgba(59, 130, 246, 0.1); padding: 5px 15px; border-radius: 8px;">{{ query.replace('http',"hxxp").replace('.','[.]').replace(':',"[:]") }}</code>
+        </h2>
+        {% if history_view %}
+        <span class="badge badge-secondary"><i class="fas fa-history"></i> Historical Report</span>
+        {% else %}
+        <span class="badge badge-success"><i class="fas fa-bolt"></i> Live Analysis</span>
+        {% endif %}
+    </div>
+
+    <!-- Intelligence Highlights -->
+    <div class="grid-2" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: 25px;">
+        {% for tool_name, data in results.items() %}
+            {% if "virustotal" in tool_name.lower() and data.data %}
+                <div class="card" style="padding: 15px; border-left: 4px solid var(--error);">
+                    <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 5px;">VirusTotal Flags</div>
+                    <div style="font-size: 1.5rem; font-weight: 800; color: var(--error);">
+                        {{ data.data.attributes.last_analysis_stats.malicious }} 
+                        <span style="font-size: 0.9rem; font-weight: 400; color: var(--text-secondary);">/ {{ data.data.attributes.last_analysis_stats.malicious + data.data.attributes.last_analysis_stats.harmless + data.data.attributes.last_analysis_stats.undetected }}</span>
+                    </div>
+                </div>
+            {% elif "abuseipdb" in tool_name.lower() %}
+                {% set score = 0 %}
+                {% if data.data %} {% set score = data.data.abuseConfidenceScore %} {% endif %}
+                <div class="card" style="padding: 15px; border-left: 4px solid {% if score > 50 %}var(--error){% else %}var(--warning){% endif %};">
+                    <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 5px;">Abuse Confidence</div>
+                    <div style="font-size: 1.5rem; font-weight: 800; color: {% if score > 50 %}var(--error){% else %}var(--warning){% endif %};">{{ score }}%</div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <!-- Full Details -->
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+        {% for tool_name, result in results.items() %}
+        <div class="card" style="background-color: var(--sidebar-bg);">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; margin-bottom: 15px;">
+                <h3 style="margin: 0; font-size: 1rem;"><i class="fas fa-microchip"></i> {{ tool_name }}</h3>
+                <button onclick="toggleDetails('{{ query|urlencode }}_{{ tool_name|urlencode }}')" style="background: transparent; border: 1px solid var(--card-bg); color: var(--text-secondary); padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 0.75rem;">Toggle JSON</button>
+            </div>
+            
+            <div id="{{ query|urlencode }}_{{ tool_name|urlencode }}" style="background-color: var(--bg-dark); padding: 15px; border-radius: 10px; font-family: 'Courier New', monospace; overflow-x: auto; max-height: 400px;">
+                {% if result is string %}
+                    <pre style="color: var(--text-primary); margin: 0; white-space: pre-wrap;">{{ result }}</pre>
+                {% else %}
+                    <pre style="color: var(--text-primary); margin: 0; white-space: pre-wrap;">{{ result | tojson(indent=2) }}</pre>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endfor %}
+
+<div class="card" style="text-align: center; margin-top: 40px;">
+    <a href="{{ url_for('index') }}" class="btn-primary" style="text-decoration: none;"><i class="fas fa-plus"></i> Start New Investigation</a>
+</div>
+
+<script>
+    function toggleDetails(id) {
+        const el = document.getElementById(id);
+        if (el.style.display === 'none') {
+            el.style.display = 'block';
+        } else {
+            el.style.display = 'none';
+        }
+    }
+</script>
+{% endblock %}

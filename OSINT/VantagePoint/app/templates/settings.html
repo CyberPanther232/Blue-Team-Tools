@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-header">
+    <h1><i class="fas fa-cog"></i> Settings</h1>
+    <p>Configure VantagePoint application behavior and manage your API keys.</p>
+</div>
+
+<div class="grid-2">
+    <!-- Security Settings -->
+    <div class="card">
+        <h3><i class="fas fa-user-shield"></i> Security & Authentication</h3>
+        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 20px;">Manage your account security and multi-factor authentication.</p>
+        
+        <div style="padding: 15px; background: rgba(0,0,0,0.2); border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;">
+            <div>
+                <div style="font-weight: 600; font-size: 0.9rem;">Multi-Factor Authentication</div>
+                <div style="font-size: 0.75rem; color: {{ 'var(--success)' if current_user.mfa_enabled else 'var(--error)' }};">
+                    {{ 'Status: Enabled' if current_user.mfa_enabled else 'Status: Disabled' }}
+                </div>
+            </div>
+            {% if not current_user.mfa_enabled %}
+            <a href="{{ url_for('mfa_setup') }}" class="btn-primary" style="padding: 6px 12px; font-size: 0.8rem; background: var(--accent); text-decoration: none; border-radius: 6px;">Enable MFA</a>
+            {% else %}
+            <div style="color: var(--success); font-size: 1.2rem;"><i class="fas fa-check-circle"></i></div>
+            {% endif %}
+        </div>
+
+        <div style="font-size: 0.85rem;">
+            <div style="margin-bottom: 8px; color: var(--text-secondary);">Logged in as: <span style="color: white; font-weight: 600;">{{ current_user.username }}</span></div>
+            <div style="color: var(--text-secondary);">Account Type: <span style="color: var(--accent);">{{ current_user.oidc_provider.capitalize() if current_user.oidc_provider else 'Local' }}</span></div>
+        </div>
+    </div>
+
+    <!-- App Settings -->
+    <div class="card">
+        <h3><i class="fas fa-database"></i> Data & Feed Management</h3>
+        <form action="{{ url_for('settings') }}" method="POST">
+            <input type="hidden" name="action" value="save_app_settings">
+            
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 8px;">Max Scan Retention History</label>
+                <input type="number" name="max_scans_retention" value="{{ settings.max_scans_retention }}" min="1" max="1000" style="width: 100%; padding: 8px; border-radius: 4px; background: var(--bg-dark); border: 1px solid var(--card-bg); color: white;">
+                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 5px;">Number of recent scans to keep in history.</p>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 8px;">Global RSS Result Limit</label>
+                <input type="number" name="limit_rss_results" value="{{ settings.limit_rss_results }}" min="1" max="200" style="width: 100%; padding: 8px; border-radius: 4px; background: var(--bg-dark); border: 1px solid var(--card-bg); color: white;">
+                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 5px;">Maximum combined entries to show in the intelligence stream (default: 25).</p>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <span>Auto-refresh Feeds (Dashboard)</span>
+                <label class="switch">
+                    <input type="checkbox" name="auto_refresh_feeds" {% if settings.auto_refresh_feeds == 'True' or settings.auto_refresh_feeds == True %}checked{% endif %}>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <button type="submit" class="btn-primary" style="width: 100%;">Save App Settings</button>
+            
+            <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--card-bg); text-align: center;">
+                <a href="{{ url_for('clear_history') }}" style="color: var(--error); text-decoration: none; font-size: 0.9rem;" onclick="return confirm('Clear all history?')"><i class="fas fa-trash"></i> Clear All Scan History Now</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- API Keys / Env Vars -->
+    <div class="card">
+        <h3><i class="fas fa-key"></i> API Keys (.env management)</h3>
+        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 20px;">Enter your API keys below. They will be saved securely to the <code>.env</code> file.</p>
+        
+        <form action="{{ url_for('settings') }}" method="POST">
+            <input type="hidden" name="action" value="save_env_vars">
+            
+            {% for key in required_keys %}
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px; font-size: 0.85rem; color: var(--accent);">{{ key }}</label>
+                <input type="password" name="{{ key }}" value="{{ env.get(key, '') }}" placeholder="Enter key here..." style="width: 100%; padding: 8px; border-radius: 4px; background: var(--bg-dark); border: 1px solid var(--card-bg); color: white;">
+            </div>
+            {% endfor %}
+
+            {% if not required_keys %}
+            <p style="color: var(--text-secondary); font-size: 0.9rem; text-align: center; margin: 20px 0;">No API modules requiring keys are currently configured.</p>
+            {% endif %}
+
+            <button type="submit" class="btn-primary" style="width: 100%; background-color: var(--success);">Update API Keys</button>
+        </form>
+    </div>
+</div>
+
+<div class="card" style="margin-top: 20px;">
+    <p style="font-size: 0.9rem; color: var(--text-secondary); text-align: center;">
+        Feeds are managed on the <a href="{{ url_for('feeds') }}" style="color: var(--accent); text-decoration: none;">Intel Feeds</a> page. | 
+        OSINT modules are managed on the <a href="{{ url_for('tools') }}" style="color: var(--accent); text-decoration: none;">OSINT Tools</a> page.
+    </p>
+</div>
+
+<style>
+.switch { position: relative; display: inline-block; width: 50px; height: 24px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--card-bg); transition: .4s; border-radius: 24px; }
+.slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
+input:checked + .slider { background-color: var(--accent); }
+input:checked + .slider:before { transform: translateX(26px); }
+</style>
+{% endblock %}

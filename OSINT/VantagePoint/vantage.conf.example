@@ -1,0 +1,30 @@
+# Configuration file for VantagePoint
+
+# This file contains configuration settings for the VantagePoint OSINT tool.
+# The way this program is structured, you can implement OSINT tools as separate modules, and this configuration file can be used to specify which tools to use, their settings, and any other relevant information.
+# Currently the configuration is minimal, but it can be expanded as needed to include more tools, settings, and options.
+# By default, the following tools are included:
+# - PhishStats: A tool for tracking phishing campaigns and identifying potential phishing sites.
+# - Sublime Security EML ANALYZER and EMAILREP: Tools for analyzing email headers and identifying potential threats.
+
+# Retention Settings
+# MAX_SCANS_RETENTION specifies how many scans to keep in history before deleting older ones.
+MAX_SCANS_RETENTION=50
+
+# User Authentication Settings
+# ALLOW_USER_REGISTRATION specifies whether new users can register for an account.
+ALLOW_USER_REGISTRATION=True
+
+MFA_REQUIRED=False
+
+# Password Complexity Settings
+# PASSWORD_LENGTH specifies the minimum length of the generated password.
+# PASSWORD_UPPERCASE specifies whether the generated password should contain uppercase letters.
+# PASSWORD_LOWERCASE specifies whether the generated password should contain lowercase letters.
+# PASSWORD_NUMBERS specifies whether the generated password should contain numbers
+# PASSWORD_SYMBOLS specifies whether the generated password should contain symbols.
+PASSWORD_LENGTH=12
+PASSWORD_UPPERCASE=True
+PASSWORD_LOWERCASE=True
+PASSWORD_NUMBERS=True
+PASSWORD_SYMBOLS=True

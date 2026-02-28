@@ -1,0 +1,4 @@
+tool_info[1]{name,description,api_endpoint,key_required,key_env_var,enabled,author,docs_link,key_header_name,consecutive_failures}:
+  AlienVault OTX,Open Threat Exchange.,"https://otx.alienvault.com",True,OTX_API_KEY,True,AlienVault,"https://otx.alienvault.com/api",x-apikey,"0"
+env_config[1]{IP_SCANNABLE,IP_ROUTE,DOMAIN_SCANNABLE,DOMAIN_ROUTE}:
+  True,"/api/v1/indicators/IPv4/{ip}/general",True,"/api/v1/indicators/domain/{domain}/general"
