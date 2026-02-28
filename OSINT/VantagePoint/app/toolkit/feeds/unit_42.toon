@@ -1,0 +1,2 @@
+feed_info[1]{name,url,enabled,consecutive_failures}:
+  Unit 42,"https://unit42.paloaltonetworks.com/feed/",True,"0"

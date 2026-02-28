@@ -1,0 +1,2 @@
+feed_info[1]{name,url,enabled,consecutive_failures}:
+  Red Flag Domains,"https://red.flag.domains/index.xml",True,"0"

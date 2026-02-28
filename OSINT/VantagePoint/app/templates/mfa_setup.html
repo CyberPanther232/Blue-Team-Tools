@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="max-width: 500px; margin: 80px auto; background: var(--card-bg); padding: 30px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.2); text-align: center;">
+    <h2 style="margin-bottom: 25px;"><i class="fas fa-shield-alt" style="color: var(--accent);"></i> Enable MFA</h2>
+    <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 0.95rem;">Scan this QR code with your authenticator app (e.g., Google Authenticator, Authy).</p>
+    
+    <div style="background: white; padding: 15px; border-radius: 12px; display: inline-block; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+        <img src="data:image/png;base64,{{ qr_code }}" alt="QR Code" style="width: 200px; height: 200px; display: block;">
+    </div>
+    
+    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 20px;">Or enter this code manually: <span style="font-family: monospace; color: var(--accent); font-weight: bold; background: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 4px;">{{ secret }}</span></p>
+    
+    <form method="POST" action="{{ url_for('mfa_enable') }}">
+        <div style="margin-bottom: 20px; max-width: 200px; margin-left: auto; margin-right: auto;">
+            <label style="display: block; margin-bottom: 8px; font-size: 0.85rem;">Verification Token</label>
+            <input type="text" name="token" placeholder="000000" required style="width: 100%; padding: 12px; text-align: center; letter-spacing: 4px; font-size: 1.2rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white;">
+        </div>
+        <button type="submit" style="width: 100%; padding: 12px; background: var(--accent); border: none; border-radius: 8px; color: white; font-weight: 600; cursor: pointer;">Verify & Enable</button>
+    </form>
+</div>
+{% endblock %}

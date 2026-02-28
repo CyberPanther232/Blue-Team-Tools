@@ -1,0 +1,3 @@
+settings:
+  max_scans_retention: "50"
+  auto_refresh_feeds: true

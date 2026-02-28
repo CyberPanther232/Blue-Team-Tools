@@ -1,0 +1,4 @@
+tool_info[1]{name,description,api_endpoint,key_required,key_env_var,enabled,author,docs_link,key_header_name,consecutive_failures}:
+  AbuseIPDB,IP address abuse database and reporting.,"https://api.abuseipdb.com/api/v2",True,ABUSEIPDB_API_KEY,True,AbuseIPDB,"https://www.abuseipdb.com/api.html",Key,"0"
+env_config[1]{IP_SCANNABLE,IP_ROUTE}:
+  True,"/check?ipAddress={ip}"

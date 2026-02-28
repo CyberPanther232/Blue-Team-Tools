@@ -1,0 +1,893 @@
+scan_info[1]:
+  - id: "85084151"
+    query: cyberpanther-dev.space
+    timestamp: "2026-02-28 12:41:27"
+    risk: Low
+    summary: No immediate threats detected
+    full_results:
+      AbuseIPDB:
+        error: Module AbuseIPDB does not support DOMAIN scanning.
+      "AlienVault OTX":
+        sections[7]: general,geo,url_list,passive_dns,malware,whois,http_scans
+        whois: "http://whois.domaintools.com/cyberpanther-dev.space"
+        alexa: "http://www.alexa.com/siteinfo/cyberpanther-dev.space"
+        indicator: cyberpanther-dev.space
+        type: domain
+        type_title: Domain
+        validation[0]:
+        base_indicator:
+        pulse_info:
+          count: 0
+          pulses[0]:
+          references[0]:
+          related:
+            alienvault:
+              adversary[0]:
+              malware_families[0]:
+              industries[0]:
+            other:
+              adversary[0]:
+              malware_families[0]:
+              industries[0]:
+        false_positive[0]:
+      GreyNoise:
+        error: Module GreyNoise does not support DOMAIN scanning.
+      Shodan:
+        error: Module Shodan does not support DOMAIN scanning.
+      VirusTotal:
+        data:
+          id: cyberpanther-dev.space
+          type: domain
+          links:
+            self: "https://www.virustotal.com/api/v3/domains/cyberpanther-dev.space"
+          attributes:
+            registrar: "HOSTINGER operations, UAB"
+            expiration_date: 1783468799
+            popularity_ranks:
+            total_votes:
+              harmless: 0
+              malicious: 0
+            last_dns_records[24]:
+              - type: AAAA
+                ttl: 300
+                value: "2606:4700:3035::ac43:cf1e"
+              - type: NS
+                ttl: 21600
+                value: cullen.ns.cloudflare.com
+              - type: NS
+                ttl: 21600
+                value: heidi.ns.cloudflare.com
+              - type: CAA
+                ttl: 300
+                flag: 0
+                tag: issuewild
+                value: ssl.com
+              - type: CAA
+                ttl: 300
+                flag: 0
+                tag: issuewild
+                value: letsencrypt.org
+              - type: CAA
+                ttl: 300
+                flag: 0
+                tag: issue
+                value: ssl.com
+              - type: CAA
+                ttl: 300
+                flag: 0
+                tag: issue
+                value: letsencrypt.org
+              - type: CAA
+                ttl: 300
+                flag: 0
+                tag: issuewild
+                value: pki.goog;
+              - type: CAA
+                ttl: 300
+                flag: 0
+                tag: issuewild
+                value: sectigo.com
+              - type: CAA
+                ttl: 300
+                flag: 0
+                tag: issue
+                value: pki.goog;
+              - type: CAA
+                ttl: 300
+                flag: 0
+                tag: issue
+                value: sectigo.com
+              - type: SOA
+                ttl: 1800
+                value: cullen.ns.cloudflare.com
+                rname: dns.cloudflare.com
+                serial: 2393636508
+                refresh: 10000
+                retry: 2400
+                expire: 604800
+                minimum: 1800
+              - type: A
+                ttl: 300
+                value: 172.67.207.30
+              - type: AAAA
+                ttl: 300
+                value: "2606:4700:3034::6815:16d6"
+              - type: CAA
+                ttl: 300
+                flag: 0
+                tag: issuewild
+                value: comodoca.com
+              - type: CAA
+                ttl: 300
+                flag: 0
+                tag: issue
+                value: comodoca.com
+              - type: TXT
+                ttl: 300
+                value: "v=spf1 include:_spf.mail.hostinger.com ~all"
+              - type: CAA
+                ttl: 300
+                flag: 0
+                tag: issuewild
+                value: digicert.com;
+              - type: MX
+                ttl: 300
+                priority: 5
+                value: mx1.hostinger.com
+              - type: CAA
+                ttl: 300
+                flag: 0
+                tag: issuewild
+                value: globalsign.com
+              - type: CAA
+                ttl: 300
+                flag: 0
+                tag: issue
+                value: digicert.com;
+              - type: CAA
+                ttl: 300
+                flag: 0
+                tag: issue
+                value: globalsign.com
+              - type: A
+                ttl: 300
+                value: 104.21.22.214
+              - type: MX
+                ttl: 300
+                priority: 10
+                value: mx2.hostinger.com
+            last_dns_records_date: 1772299413
+            last_analysis_date: 1772299383
+            last_https_certificate:
+              cert_signature:
+                signature_algorithm: 1.2.840.10045.4.3.2
+                signature: 3045022074d5e9e586610fb51399ad68cb76de58597699e50dbba3e32e921725b1972ab4022100c1c3eeae0a5d5c8c2e67c99759285149ce27b57f5a70d10756b036922cd32911
+              extensions:
+                key_usage[1]: digitalSignature
+                extended_key_usage[1]: serverAuth
+                CA: false
+                subject_key_identifier: e68e500b9cf4c0c838cfc56861aaca10ecdb25ef
+                authority_key_identifier:
+                  keyid: 9077923567c4ffa8cca9e67bd980797bcc93f938
+                ca_information_access:
+                  OCSP: "http://o.pki.goog/s/we1/P58"
+                  "CA Issuers": "http://i.pki.goog/we1.crt"
+                subject_alternative_name[2]: cyberpanther-dev.space,*.cyberpanther-dev.space
+                certificate_policies[1]: 2.23.140.1.2.1
+                crl_distribution_points[1]: "http://c.pki.goog/we1/Hk21MYmfQqY.crl"
+                "1.3.6.1.4.1.11129.2.4.2": "0481f100ef007600cb38f715897c84a1445f5bc1ddfbc96ef29a59cd470a6905"
+              validity:
+                not_after: "2026-04-06 07:41:44"
+                not_before: "2026-01-06 06:44:24"
+              size: 968
+              version: V3
+              public_key:
+                algorithm: EC
+                ec:
+                  oid: secp256r1
+                  pub: 3059301306072a8648ce3d020106082a8648ce3d030107034200040adaf5d00f1d6f68953a6f58dcf038643d5c40b8985ab643cb2b9c87b5454a7f5afcd845101faffe32fb7459893e7607ef14db8823a12ac740dd24d2d061b743
+              thumbprint_sha256: 6795cc0a6599283f48df935d1b175fc1d714bbd0ddf963fe68fb8b347d2f4181
+              thumbprint: 0fdd239d622ca8dfa03ce627259c891d7e59e3e5
+              serial_number: 3f9f3277220d18e513e6a1a8aca728f1
+              issuer:
+                C: US
+                O: Google Trust Services
+                CN: WE1
+              subject:
+                CN: cyberpanther-dev.space
+            last_modification_date: 1772299984
+            rdap:
+              handle: D568106580-CNIC
+              ldh_name: cyberpanther-dev.space
+              events[4]:
+                - event_action: registration
+                  event_date: "2025-07-07T18:40:53.0Z"
+                  event_actor: ""
+                  links[0]:
+                - event_action: expiration
+                  event_date: "2026-07-07T23:59:59.0Z"
+                  event_actor: ""
+                  links[0]:
+                - event_action: last update of RDAP database
+                  event_date: "2026-02-23T01:38:33.0Z"
+                  event_actor: ""
+                  links[0]:
+                - event_action: last changed
+                  event_date: "2025-07-12T18:44:37.0Z"
+                  event_actor: ""
+                  links[0]:
+              links[3]:
+                - href: "https://rdap.centralnic.com/space/domain/cyberpanther-dev.space"
+                  rel: self
+                  type: application/rdap+json
+                  title: Authoritative URL for this resource
+                  value: "https://rdap.centralnic.com/space/domain/cyberpanther-dev.space"
+                  media: ""
+                  href_lang[0]:
+                - href: "https://whois.nic.space/rdap"
+                  rel: help
+                  type: text/html
+                  title: RDAP Service Help
+                  value: "https://rdap.centralnic.com/space/domain/cyberpanther-dev.space"
+                  media: ""
+                  href_lang[0]:
+                - href: "https://rdap.hostinger.com/domain/cyberpanther-dev.space"
+                  rel: related
+                  type: application/rdap+json
+                  title: URL of Sponsoring Registrar's RDAP Record
+                  value: "https://rdap.centralnic.com/space/domain/cyberpanther-dev.space"
+                  media: ""
+                  href_lang[0]:
+              notices[3]:
+                - title: Status Codes
+                  description[1]: "For more information on domain status codes, please visit https://icann.org/epp"
+                  links[1]:
+                    - href: "https://icann.org/epp"
+                      rel: glossary
+                      title: More information on domain status codes
+                      value: "https://rdap.centralnic.com/space/domain/cyberpanther-dev.space"
+                      type: ""
+                      media: ""
+                      href_lang[0]:
+                  type: ""
+                - title: Terms of Use
+                  description[20]: "For more information on Whois status codes, please visit https://icann.org/epp","",">>> IMPORTANT INFORMATION ABOUT THE DEPLOYMENT OF RDAP: please visit","https://www.centralnicregistry.com/support/information/rdap <<<","",The registration data available in this service is limited. Additional,"data may be available at https://lookup.icann.org","","The Whois and RDAP services are provided by CentralNic, and contain",information pertaining to Internet domain names registered by our,our customers. By using this service you are agreeing (1) not to use any,information presented here for any purpose other than determining,"ownership of domain names, (2) not to store or reproduce this data in","any way, (3) not to use any high-volume, automated, electronic processes",to obtain data from this service. Abuse of this service is monitored and,actions in contravention of these terms will result in being permanently,"blacklisted. All data is (c) CentralNic Ltd (https://www.centralnicregistry.com)","",Access to the Whois and RDAP services is rate limited. For more,"information, visit https://centralnicregistry.com/policies/whois-guidance."
+                  links[1]:
+                    - href: "https://www.centralnicregistry.com/"
+                      rel: terms-of-service
+                      title: Terms of Use
+                      value: "https://rdap.centralnic.com/space/domain/cyberpanther-dev.space"
+                      type: ""
+                      media: ""
+                      href_lang[0]:
+                  type: ""
+                - title: RDDS Inaccuracy Complaint Form
+                  description[1]: "URL of the ICANN RDDS Inaccuracy Complaint Form: https://icann.org/wicf"
+                  links[1]:
+                    - href: "https://icann.org/wicf"
+                      rel: help
+                      title: ICANN RDDS Inaccuracy Complaint Form
+                      value: "https://rdap.centralnic.com/space/domain/cyberpanther-dev.space"
+                      type: ""
+                      media: ""
+                      href_lang[0]:
+                  type: ""
+              nameservers[2]:
+                - handle: H22832516-CNIC
+                  ldh_name: heidi.ns.cloudflare.com
+                  links[1]:
+                    - href: "https://rdap.centralnic.com/space/nameserver/heidi.ns.cloudflare.com"
+                      rel: self
+                      type: application/rdap+json
+                      title: Authoritative URL for this resource
+                      value: "https://rdap.centralnic.com/space/domain/cyberpanther-dev.space"
+                      media: ""
+                      href_lang[0]:
+                  object_class_name: nameserver
+                  unicode_name: ""
+                  events[0]:
+                  notices[0]:
+                  status[0]:
+                  lang: ""
+                  port43: ""
+                  entities[0]:
+                  remarks[0]:
+                - handle: H22828506-CNIC
+                  ldh_name: cullen.ns.cloudflare.com
+                  links[1]:
+                    - href: "https://rdap.centralnic.com/space/nameserver/cullen.ns.cloudflare.com"
+                      rel: self
+                      type: application/rdap+json
+                      title: Authoritative URL for this resource
+                      value: "https://rdap.centralnic.com/space/domain/cyberpanther-dev.space"
+                      media: ""
+                      href_lang[0]:
+                  object_class_name: nameserver
+                  unicode_name: ""
+                  events[0]:
+                  notices[0]:
+                  status[0]:
+                  lang: ""
+                  port43: ""
+                  entities[0]:
+                  remarks[0]:
+              rdap_conformance[3]: icann_rdap_response_profile_1,icann_rdap_technical_implementation_guide_1,rdap_level_0
+              entities[1]:
+                - object_class_name: entity
+                  handle: "1636"
+                  vcard_array[2]:
+                    - name: version
+                      type: text
+                      values[1]: "4.0"
+                      parameters:
+                    - name: fn
+                      type: text
+                      values[1]: "HOSTINGER operations, UAB"
+                      parameters:
+                  roles[1]: registrar
+                  public_ids[1]{type,identifier}:
+                    IANA Registrar ID,"1636"
+                  entities[1]:
+                    - object_class_name: entity
+                      handle: not applicable
+                      vcard_array[5]:
+                        - name: version
+                          type: text
+                          values[1]: "4.0"
+                          parameters:
+                        - name: fn
+                          type: text
+                          values[1]: Abuse Contact
+                          parameters:
+                        - name: org
+                          type: text
+                          values[1]: "HOSTINGER operations, UAB"
+                          parameters:
+                        - name: email
+                          type: text
+                          values[1]: abuse@hostinger.com
+                          parameters:
+                        - name: tel
+                          parameters:
+                            type[1]: voice
+                          type: uri
+                          values[1]: "tel:+370.64503378"
+                      roles[1]: abuse
+                      public_ids[0]:
+                      entities[0]:
+                      remarks[0]:
+                      links[0]:
+                      events[0]:
+                      as_event_actor[0]:
+                      status[0]:
+                      port43: ""
+                      networks[0]:
+                      autnums[0]:
+                      url: ""
+                      lang: ""
+                      rdap_conformance[0]:
+                  links[2]:
+                    - href: "https://rdap.centralnic.com/space/entity/1636"
+                      rel: self
+                      type: application/rdap+json
+                      title: Authoritative URL for this resource
+                      value: "https://rdap.centralnic.com/space/domain/cyberpanther-dev.space"
+                      media: ""
+                      href_lang[0]:
+                    - href: "https://www.hostinger.com/"
+                      rel: about
+                      title: Registrar's Website
+                      value: "https://rdap.hostinger.com/"
+                      type: ""
+                      media: ""
+                      href_lang[0]:
+                  remarks[0]:
+                  events[0]:
+                  as_event_actor[0]:
+                  status[0]:
+                  port43: ""
+                  networks[0]:
+                  autnums[0]:
+                  url: ""
+                  lang: ""
+                  rdap_conformance[0]:
+              object_class_name: domain
+              status[1]: client transfer prohibited
+              secure_dns:
+                delegation_signed: false
+                zone_signed: false
+                max_sig_life: 0
+                ds_data[0]:
+                key_data[0]:
+              port43: whois.nic.space
+              lang: en
+              unicode_name: ""
+              punycode: ""
+              type: ""
+              switch_name: ""
+              public_ids[0]:
+              remarks[0]:
+              nask0_state: ""
+              variants[0]:
+            whois: "Creation Date: 2025-07-07T18:40:53.0Z\nDNSSEC: unsigned\nDomain Name: CYBERPANTHER-DEV.SPACE\nDomain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited\nName Server: CULLEN.NS.CLOUDFLARE.COM\nName Server: HEIDI.NS.CLOUDFLARE.COM\nRegistrar Abuse Contact Email: abuse@hostinger.com\nRegistrar Abuse Contact Phone: +370.64503378\nRegistrar IANA ID: 1636\nRegistrar URL: https://www.hostinger.com/\nRegistrar WHOIS Server: whois.hostinger.com\nRegistrar: HOSTINGER operations, UAB\nRegistry Domain ID: D568106580-CNIC\nRegistry Expiry Date: 2026-07-07T23:59:59.0Z\nUpdated Date: 2025-07-12T18:44:37.0Z"
+            whois_date: 1771810713
+            categories:
+            creation_date: 1751913653
+            last_update_date: 1752345877
+            last_https_certificate_date: 1772299413
+            last_analysis_results:
+              Acronis:
+                method: blacklist
+                engine_name: Acronis
+                category: harmless
+                result: clean
+              "0xSI_f33d":
+                method: blacklist
+                engine_name: 0xSI_f33d
+                category: undetected
+                result: unrated
+              Abusix:
+                method: blacklist
+                engine_name: Abusix
+                category: harmless
+                result: clean
+              ADMINUSLabs:
+                method: blacklist
+                engine_name: ADMINUSLabs
+                category: harmless
+                result: clean
+              Axur:
+                method: blacklist
+                engine_name: Axur
+                category: undetected
+                result: unrated
+              ChainPatrol:
+                method: blacklist
+                engine_name: ChainPatrol
+                category: undetected
+                result: unrated
+              "Criminal IP":
+                method: blacklist
+                engine_name: Criminal IP
+                category: harmless
+                result: clean
+              "AILabs (MONITORAPP)":
+                method: blacklist
+                engine_name: AILabs (MONITORAPP)
+                category: harmless
+                result: clean
+              AlienVault:
+                method: blacklist
+                engine_name: AlienVault
+                category: harmless
+                result: clean
+              alphaMountain.ai:
+                method: blacklist
+                engine_name: alphaMountain.ai
+                category: undetected
+                result: unrated
+              AlphaSOC:
+                method: blacklist
+                engine_name: AlphaSOC
+                category: undetected
+                result: unrated
+              "Antiy-AVL":
+                method: blacklist
+                engine_name: Antiy-AVL
+                category: harmless
+                result: clean
+              "ArcSight Threat Intelligence":
+                method: blacklist
+                engine_name: ArcSight Threat Intelligence
+                category: undetected
+                result: unrated
+              AutoShun:
+                method: blacklist
+                engine_name: AutoShun
+                category: undetected
+                result: unrated
+              benkow.cc:
+                method: blacklist
+                engine_name: benkow.cc
+                category: harmless
+                result: clean
+              "Bfore.Ai PreCrime":
+                method: blacklist
+                engine_name: Bfore.Ai PreCrime
+                category: undetected
+                result: unrated
+              BitDefender:
+                method: blacklist
+                engine_name: BitDefender
+                category: harmless
+                result: clean
+              Bkav:
+                method: blacklist
+                engine_name: Bkav
+                category: undetected
+                result: unrated
+              Blueliv:
+                method: blacklist
+                engine_name: Blueliv
+                category: harmless
+                result: clean
+              Certego:
+                method: blacklist
+                engine_name: Certego
+                category: harmless
+                result: clean
+              "Chong Lua Dao":
+                method: blacklist
+                engine_name: Chong Lua Dao
+                category: undetected
+                result: unrated
+              "CINS Army":
+                method: blacklist
+                engine_name: CINS Army
+                category: harmless
+                result: clean
+              Cluster25:
+                method: blacklist
+                engine_name: Cluster25
+                category: undetected
+                result: unrated
+              CRDF:
+                method: blacklist
+                engine_name: CRDF
+                category: harmless
+                result: clean
+              "CSIS Security Group":
+                method: blacklist
+                engine_name: CSIS Security Group
+                category: undetected
+                result: unrated
+              "Snort IP sample list":
+                method: blacklist
+                engine_name: Snort IP sample list
+                category: undetected
+                result: unrated
+              "CMC Threat Intelligence":
+                method: blacklist
+                engine_name: CMC Threat Intelligence
+                category: harmless
+                result: clean
+              Cyan:
+                method: blacklist
+                engine_name: Cyan
+                category: undetected
+                result: unrated
+              Cyble:
+                method: blacklist
+                engine_name: Cyble
+                category: harmless
+                result: clean
+              CyRadar:
+                method: blacklist
+                engine_name: CyRadar
+                category: harmless
+                result: clean
+              DNS8:
+                method: blacklist
+                engine_name: DNS8
+                category: harmless
+                result: clean
+              Dr.Web:
+                method: blacklist
+                engine_name: Dr.Web
+                category: harmless
+                result: clean
+              Ermes:
+                method: blacklist
+                engine_name: Ermes
+                category: undetected
+                result: unrated
+              ESET:
+                method: blacklist
+                engine_name: ESET
+                category: harmless
+                result: clean
+              ESTsecurity:
+                method: blacklist
+                engine_name: ESTsecurity
+                category: harmless
+                result: clean
+              EmergingThreats:
+                method: blacklist
+                engine_name: EmergingThreats
+                category: harmless
+                result: clean
+              Emsisoft:
+                method: blacklist
+                engine_name: Emsisoft
+                category: harmless
+                result: clean
+              "Forcepoint ThreatSeeker":
+                method: blacklist
+                engine_name: Forcepoint ThreatSeeker
+                category: undetected
+                result: unrated
+              Fortinet:
+                method: blacklist
+                engine_name: Fortinet
+                category: harmless
+                result: clean
+              "G-Data":
+                method: blacklist
+                engine_name: G-Data
+                category: harmless
+                result: clean
+              "GCP Abuse Intelligence":
+                method: blacklist
+                engine_name: GCP Abuse Intelligence
+                category: undetected
+                result: unrated
+              "Google Safebrowsing":
+                method: blacklist
+                engine_name: Google Safebrowsing
+                category: harmless
+                result: clean
+              GreenSnow:
+                method: blacklist
+                engine_name: GreenSnow
+                category: harmless
+                result: clean
+              GreyNoise:
+                method: blacklist
+                engine_name: GreyNoise
+                category: undetected
+                result: unrated
+              Gridinsoft:
+                method: blacklist
+                engine_name: Gridinsoft
+                category: undetected
+                result: unrated
+              "Heimdal Security":
+                method: blacklist
+                engine_name: Heimdal Security
+                category: harmless
+                result: clean
+              "Hunt.io Intelligence":
+                method: blacklist
+                engine_name: Hunt.io Intelligence
+                category: undetected
+                result: unrated
+              IPsum:
+                method: blacklist
+                engine_name: IPsum
+                category: harmless
+                result: clean
+              "Juniper Networks":
+                method: blacklist
+                engine_name: Juniper Networks
+                category: harmless
+                result: clean
+              Kaspersky:
+                method: blacklist
+                engine_name: Kaspersky
+                category: harmless
+                result: clean
+              Lionic:
+                method: blacklist
+                engine_name: Lionic
+                category: harmless
+                result: clean
+              Lumu:
+                method: blacklist
+                engine_name: Lumu
+                category: undetected
+                result: unrated
+              MalwarePatrol:
+                method: blacklist
+                engine_name: MalwarePatrol
+                category: harmless
+                result: clean
+              MalwareURL:
+                method: blacklist
+                engine_name: MalwareURL
+                category: undetected
+                result: unrated
+              Malwared:
+                method: blacklist
+                engine_name: Malwared
+                category: harmless
+                result: clean
+              Mimecast:
+                method: blacklist
+                engine_name: Mimecast
+                category: undetected
+                result: unrated
+              Netcraft:
+                method: blacklist
+                engine_name: Netcraft
+                category: undetected
+                result: unrated
+              OpenPhish:
+                method: blacklist
+                engine_name: OpenPhish
+                category: harmless
+                result: clean
+              "Phishing Database":
+                method: blacklist
+                engine_name: Phishing Database
+                category: harmless
+                result: clean
+              PhishFort:
+                method: blacklist
+                engine_name: PhishFort
+                category: undetected
+                result: unrated
+              PhishLabs:
+                method: blacklist
+                engine_name: PhishLabs
+                category: undetected
+                result: unrated
+              Phishtank:
+                method: blacklist
+                engine_name: Phishtank
+                category: harmless
+                result: clean
+              PREBYTES:
+                method: blacklist
+                engine_name: PREBYTES
+                category: harmless
+                result: clean
+              PrecisionSec:
+                method: blacklist
+                engine_name: PrecisionSec
+                category: undetected
+                result: unrated
+              "Quick Heal":
+                method: blacklist
+                engine_name: Quick Heal
+                category: harmless
+                result: clean
+              Quttera:
+                method: blacklist
+                engine_name: Quttera
+                category: harmless
+                result: clean
+              SafeToOpen:
+                method: blacklist
+                engine_name: SafeToOpen
+                category: undetected
+                result: unrated
+              "Sansec eComscan":
+                method: blacklist
+                engine_name: Sansec eComscan
+                category: undetected
+                result: unrated
+              Scantitan:
+                method: blacklist
+                engine_name: Scantitan
+                category: harmless
+                result: clean
+              SCUMWARE.org:
+                method: blacklist
+                engine_name: SCUMWARE.org
+                category: harmless
+                result: clean
+              Seclookup:
+                method: blacklist
+                engine_name: Seclookup
+                category: harmless
+                result: clean
+              SecureBrain:
+                method: blacklist
+                engine_name: SecureBrain
+                category: undetected
+                result: unrated
+              SOCRadar:
+                method: blacklist
+                engine_name: SOCRadar
+                category: undetected
+                result: unrated
+              Sophos:
+                method: blacklist
+                engine_name: Sophos
+                category: harmless
+                result: clean
+              Spam404:
+                method: blacklist
+                engine_name: Spam404
+                category: harmless
+                result: clean
+              StopForumSpam:
+                method: blacklist
+                engine_name: StopForumSpam
+                category: harmless
+                result: clean
+              "Sucuri SiteCheck":
+                method: blacklist
+                engine_name: Sucuri SiteCheck
+                category: harmless
+                result: clean
+              ThreatHive:
+                method: blacklist
+                engine_name: ThreatHive
+                category: harmless
+                result: clean
+              Trustwave:
+                method: blacklist
+                engine_name: Trustwave
+                category: harmless
+                result: clean
+              URLhaus:
+                method: blacklist
+                engine_name: URLhaus
+                category: harmless
+                result: clean
+              URLQuery:
+                method: blacklist
+                engine_name: URLQuery
+                category: undetected
+                result: unrated
+              "Viettel Threat Intelligence":
+                method: blacklist
+                engine_name: Viettel Threat Intelligence
+                category: harmless
+                result: clean
+              VIPRE:
+                method: blacklist
+                engine_name: VIPRE
+                category: undetected
+                result: unrated
+              "VX Vault":
+                method: blacklist
+                engine_name: VX Vault
+                category: harmless
+                result: clean
+              ViriBack:
+                method: blacklist
+                engine_name: ViriBack
+                category: harmless
+                result: clean
+              Webroot:
+                method: blacklist
+                engine_name: Webroot
+                category: harmless
+                result: clean
+              "Yandex Safebrowsing":
+                method: blacklist
+                engine_name: Yandex Safebrowsing
+                category: harmless
+                result: clean
+              ZeroCERT:
+                method: blacklist
+                engine_name: ZeroCERT
+                category: harmless
+                result: clean
+              desenmascara.me:
+                method: blacklist
+                engine_name: desenmascara.me
+                category: harmless
+                result: clean
+              "malwares.com URL checker":
+                method: blacklist
+                engine_name: malwares.com URL checker
+                category: harmless
+                result: clean
+              securolytics:
+                method: blacklist
+                engine_name: securolytics
+                category: harmless
+                result: clean
+              "Xcitium Verdict Cloud":
+                method: blacklist
+                engine_name: Xcitium Verdict Cloud
+                category: undetected
+                result: unrated
+              ZeroFox:
+                method: blacklist
+                engine_name: ZeroFox
+                category: undetected
+                result: unrated
+            jarm: 27d40d40d00040d1dc42d43d00041d6183ff1bfae51ebd88d70384363d525c
+            tags[0]:
+            reputation: 0
+            last_analysis_stats:
+              malicious: 0
+              suspicious: 0
+              undetected: 35
+              harmless: 58
+              timeout: 0
+            tld: space
